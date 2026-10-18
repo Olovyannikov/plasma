@@ -36,6 +36,24 @@ describeFn('Numbers', () => {
         cy.get(`.${classes.unit}`).should('not.exist');
     });
 
+    it('approximate', () => {
+        mount(
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1rem',
+                    ...numbersProps.style,
+                }}
+            >
+                <Numbers size="m" value={28.8} unit="degree" approximate />
+                <Numbers size="m" value={-28.8} unit="degree" approximate />
+            </div>,
+        );
+
+        cy.matchImageSnapshot();
+    });
+
     it('expands exponential notation', () => {
         mount(
             <>

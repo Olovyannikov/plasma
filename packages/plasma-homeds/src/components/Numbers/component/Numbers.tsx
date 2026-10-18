@@ -8,6 +8,7 @@ import {
     StyledDigits,
     StyledFraction,
     StyledMinus,
+    StyledTilde,
     StyledSeparator,
     StyledValue,
     StyledPercent,
@@ -17,8 +18,8 @@ import { base as sizeCSS } from './variations/_size/base';
 import { base as viewCSS } from './variations/_view/base';
 import { splitValue } from './utils/splitValue';
 
-export const numbersRoot = (Root: RootProps<HTMLSpanElement, Omit<NumbersProps, 'value' | 'unit'>>) =>
-    forwardRef<HTMLSpanElement, NumbersProps>(({ value, unit, size, view, ...rest }, ref) => {
+export const numbersRoot = (Root: RootProps<HTMLSpanElement, Omit<NumbersProps, 'value' | 'unit' | 'approximate'>>) =>
+    forwardRef<HTMLSpanElement, NumbersProps>(({ value, unit, approximate, size, view, ...rest }, ref) => {
         if (!Number.isFinite(value)) {
             return null;
         }
@@ -32,6 +33,7 @@ export const numbersRoot = (Root: RootProps<HTMLSpanElement, Omit<NumbersProps, 
 
         return (
             <Root ref={ref} size={size} view={view} {...rest}>
+                {approximate && <StyledTilde className={classes.tilde} role="img" aria-label="≈" />}
                 {value < 0 && <StyledMinus className={classes.minus}>-</StyledMinus>}
 
                 <StyledValue>

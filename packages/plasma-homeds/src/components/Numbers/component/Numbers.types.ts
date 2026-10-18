@@ -12,6 +12,11 @@ export type NumbersProps = {
      */
     unit?: 'degree' | 'percent';
     /**
+     * Знак «≈» перед числом: приблизительное значение.
+     * @default false
+     */
+    approximate?: boolean;
+    /**
      * Размер цифр.
      * @default xs
      */
