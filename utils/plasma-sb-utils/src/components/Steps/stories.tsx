@@ -43,10 +43,10 @@ export const createDefaultStory = (Steps: any, stepItemViews: any) => {
                 const viewTitle = applyCustomCompletedItemView ? `${completedItemView} view` : innerTitle;
 
                 if (simple) {
-                    return { indicator, status, completedItemView };
+                    return { indicator, status, completedItemView, size: itemSize };
                 }
 
-                return { title: viewTitle, content, indicator, status, completedItemView };
+                return { title: viewTitle, content, indicator, status, completedItemView, size: itemSize };
             });
 
             setItems(newItems);
